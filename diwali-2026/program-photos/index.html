@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diwali 2026 Photos | UPAD</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f3f6f9; color: #16324a; font: 1rem/1.55 system-ui, sans-serif; }
+    main { max-width: 60rem; margin: auto; padding: clamp(1rem, 4vw, 2.5rem); }
+    header { padding: clamp(1.25rem, 4vw, 2rem); margin: 1rem 0; background: #102e49; color: white; border-radius: .9rem; border-bottom: 4px solid #c69b49; }
+    h1 { font: 700 clamp(2rem, 5vw, 3rem)/1.15 Georgia, serif; margin: 0; }
+    header p { margin: .65rem 0 0; }
+    a { color: #102e49; text-underline-offset: .2em; }
+    input { display: block; width: 100%; margin: .35rem 0 1rem; padding: .7rem; font: inherit; border: 1px solid #5e7081; border-radius: .4rem; }
+    ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr)); gap: .65rem; margin: 0; padding: 0; list-style: none; }
+    li { padding: 1rem; background: #fff; border: 1px solid #dfc083; border-radius: .55rem; scroll-margin-top: 1rem; }
+    li:target { outline: 3px solid #ad761e; }
+    h2 { margin: 0 0 .5rem; }
+    h3 { font-size: 1rem; margin: 0; }
+    .album { padding: 1rem; margin: 0 0 1rem; border-radius: .55rem; border: 1px solid #dfc083; background: white; }
+    .album p { margin: .35rem 0 0; }
+    .album a { font-weight: 650; }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="/">UPAD Community Hub</a>
+    <header>
+      <h1>Diwali 2026 Photos</h1>
+    </header>
+    <section class="album" aria-labelledby="google-title">
+      <h2 id="google-title">Diwali Photo Album</h2>
+      <a href="https://photos.app.goo.gl/qDzdPXKK1ho1cNvb6">Open Google Photos album</a>
+    </section>
+    <section class="album" id="guest-photos" aria-labelledby="guest-title">
+      <h2 id="guest-title">Guest &amp; Crowd Photos</h2>
+      <p>The Vimeo guest gallery is coming soon.</p>
+    </section>
+    <section aria-labelledby="program-title">
+      <h2 id="program-title">Photos by Program</h2>
+      <p>Vimeo galleries for Programs 01–18 are coming soon.</p>
+    <div id="search-controls" hidden>
+      <label for="program-search">Search by program name or number</label>
+      <input type="search" id="program-search">
+      <p id="no-results" role="status" hidden>No matching programs.</p>
+    </div>
+    <ul id="programs">
+      <li id="program-01"><h3>Program 01 · Avadh Mein Laute Hain Shree Ram | Manao Diwali</h3></li>
+      <li id="program-02"><h3>Program 02 · Garba</h3></li>
+      <li id="program-03"><h3>Program 03 · Kehna Hi Kya | Gehra Hua | Shararat</h3></li>
+      <li id="program-04"><h3>Program 04 · Ghoomar</h3></li>
+      <li id="program-05"><h3>Program 05 · Bollywood Medley</h3></li>
+      <li id="program-06"><h3>Program 06 · Sher Khul Gaye Medley</h3></li>
+      <li id="program-07"><h3>Program 07 · Deewane | Thummak Thummak</h3></li>
+      <li id="program-08"><h3>Program 08 · Bollywood Comedy Dance</h3></li>
+      <li id="program-09"><h3>Program 09 · Banna Re</h3></li>
+      <li id="program-10"><h3>Program 10 · Apt Apt | Sapphire</h3></li>
+      <li id="program-11"><h3>Program 11 · Deva Shri Ganeshsa</h3></li>
+      <li id="program-12"><h3>Program 12 · Mohe Rang Do</h3></li>
+      <li id="program-13"><h3>Program 13 · Bollywood Medley - Dhurandhar</h3></li>
+      <li id="program-14"><h3>Program 14 · Bhangra</h3></li>
+      <li id="program-15"><h3>Program 15 · Shambho Sutaya | Ladki Beautiful | Nain Matka</h3></li>
+      <li id="program-16"><h3>Program 16 · Bhangra mix</h3></li>
+      <li id="program-17"><h3>Program 17 · Paramparik Kathak</h3></li>
+      <li id="program-18"><h3>Program 18 · Tauba Tauba</h3></li>
+    </ul>
+    </section>
+  </main>
+  <script>
+    const search = document.querySelector('#program-search');
+    const cards = Array.from(document.querySelectorAll('#programs li'));
+    document.querySelector('#search-controls').hidden = false;
+    search.addEventListener('input', () => {
+      const query = search.value.trim().toLowerCase();
+      for (const card of cards) {
+        card.hidden = !card.textContent.toLowerCase().includes(query);
+      }
+      document.querySelector('#no-results').hidden = cards.some(card => !card.hidden);
+    });
+  </script>
+</body>
+</html>
