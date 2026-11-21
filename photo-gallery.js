@@ -3,7 +3,7 @@
   if (!gallery) return;
 
   // Paste the published Google Sheets CSV URL here once.
-  const sheetUrl = '';
+  const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTFvfTgj2b5BYhq9lQVdZrzMDYzEnRWfOLCMmlZ_eVL01q9mPEdTe74H1WQ6TYcybJzbDvqMLvos3a7/pub?gid=1889005054&single=true&output=csv';
   const backupUrl = '/photo-gallery.csv';
 
   function parseCsv(csv) {
@@ -52,14 +52,14 @@
   function addLink(container, value, type) {
     const accepted = type === 'google'
       ? ['photos.app.goo.gl', 'photos.google.com']
-      : ['vimeo.com', 'www.vimeo.com', 'player.vimeo.com'];
+      : ['vimeo.com', 'www.vimeo.com', 'player.vimeo.com', '1drv.ms', 'onedrive.live.com'];
     let url;
     try { url = new URL(value); } catch {}
     if (url?.protocol !== 'https:' || !accepted.includes(url.hostname)) {
       element('p', 'Coming soon', container);
       return;
     }
-    const link = element('a', type === 'google' ? 'Open Google Photos album' : 'View on Vimeo', container);
+    const link = element('a', type === 'google' ? 'Open Google Photos album' : 'Open photo folder', container);
     link.href = url.href;
   }
 
@@ -71,7 +71,7 @@
       if (!gallery.dataset.programIdPrefix) document.title = title + ' | UPAD';
     }
     for (const [type, , name, url] of rows) {
-      if (!['google', 'guest'].includes(type) || !name) continue;
+      if (!['google', 'collection', 'guest'].includes(type) || !name) continue;
       const section = element('section', '', gallery);
       section.className = 'album';
       element('h2', name, section);
